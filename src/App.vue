@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <employee-table/>
+    <employee-table :employees="employees" />
   </div>
 </template>
 
@@ -11,6 +11,27 @@ export default {
   name: 'app',
   components: {
     EmployeeTable
+  },
+  data() {
+    return {
+      employees: [
+        {
+          id: 1,
+          name: 'Richard Hendrickstest',
+          email: 'richard@piedpiper.com',
+        },
+        {
+          id: 2,
+          name: 'Bertram Gilfoyle',
+          email: 'gilfoyle@piedpiper.com',
+        },
+        {
+          id: 3,
+          name: 'Dinesh Chugtai',
+          email: 'dinesh@piedpiper.com',
+        },
+      ],
+    }
   }
 }
 </script>
