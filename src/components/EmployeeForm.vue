@@ -46,7 +46,6 @@
 
             if(this.invalidName || this.invalidEmail){
                 this.error = true
-                console.log("error")
                 return
             }
 

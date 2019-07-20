@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <employee-form @add:employee="addEmployee" />
-    <employee-table :employees="employees" />
+    <employee-table 
+      :employees="employees" 
+      @edit:employee="editEmployee" 
+      @delete:employee="deleteEmployee" />
   </div>
 </template>
 
@@ -42,11 +45,18 @@ export default {
         .map(function(e) { return e.id; })
         .reduce(function(currentMax, number) {
           return number > currentMax ? number : currentMax;
-        }, 1)
+        }, 0)
       let id = lastId + 1
       let newEmployee = { ...employee, id }
       this.employees = [...this.employees, newEmployee]
     },
+    deleteEmployee(id) {
+      this.employees = this.employees.filter(employee => employee.id !== id)
+    },
+    editEmployee(id, updatedEmployee) {
+      this.employees = this.employees
+        .map(employee => employee.id === id ? updatedEmployee : employee)
+    }
   }
 }
 </script>
